@@ -11,11 +11,12 @@ import Layout.Trailler;
 
 
 public class Processamento {
-	
+	Trailler traillerArquivo;
+	Header headerArquivo;
 	
 	public Processamento(String nArquivo, ArrayList<Detalhe> listaVendas) {
-		Header headerArquivo = new Header();
-		Trailler traillerArquivo = new Trailler();
+		 headerArquivo = new Header();
+		 traillerArquivo = new Trailler();
 		try {
 			FileReader arq = new FileReader(nArquivo);
 			BufferedReader bf = new BufferedReader(arq);
@@ -110,8 +111,8 @@ public class Processamento {
 		return venda;
 	}
 	
-	//public ArrayList<Detalhe> getListaProcessada(){
-	//	return listaVendas;
-	//}
+	public Trailler getTrailler(){
+		return traillerArquivo;
+	}
 		
 }
