@@ -13,7 +13,7 @@ public class DetalheUtil {
 		ArrayList<Detalhe> listaBandeiras = filtrarBandeira(listaVendas, bandeira);
 		for(Detalhe d : listaBandeiras) {
 			System.out.println(d);
-		}
+		}	
 	}
 	
 	public ArrayList<Detalhe> filtrarBandeira(ArrayList<Detalhe> listaVendas, String bandeira) {
@@ -27,6 +27,16 @@ public class DetalheUtil {
 	}
 	public Integer filtrarQuantidadeVenda(ArrayList<Detalhe> listaVendas) {
 		return listaVendas.size();
+	}
+
+	public Integer filtrarVendasDebitoVista(ArrayList<Detalhe> listaVendas){
+		int contVendasDebito = 0;
+		for (Detalhe d : listaVendas){
+			if(d.getQtdParcela() == 0){
+				contVendasDebito ++;
+			}
+		}
+		return contVendasDebito;
 	}
 
 }
