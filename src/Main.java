@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 import Layout.Detalhe;
+import Layout.Trailler;
 import Util.DetalheUtil;
 
 public class Main {
@@ -9,8 +10,9 @@ public class Main {
 		// TODO Auto-generated method stub
 		ArrayList<Detalhe> listaVendas = new ArrayList<Detalhe>();
 		Processamento p = new Processamento("arquivos", listaVendas);
-		
-		DetalheUtil d = new DetalheUtil(listaVendas);
+		Trailler traillerArquivo = p.getTrailler();
+
+		DetalheUtil d = new DetalheUtil(listaVendas, traillerArquivo);
 	}
 
 }
