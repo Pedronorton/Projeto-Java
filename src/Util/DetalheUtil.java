@@ -39,4 +39,14 @@ public class DetalheUtil {
 		return contVendasDebito;
 	}
 
+	public Integer filtrarVendasCreditoVista(ArrayList<Detalhe> listaVendas){
+		int contVendasCredito = 0;
+		for (Detalhe d : listaVendas){
+			if(d.getQtdParcela() == 1){
+				contVendasCredito ++;
+			}
+		}
+		return contVendasCredito;
+	}
+
 }
