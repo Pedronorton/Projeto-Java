@@ -25,5 +25,8 @@ public class DetalheUtil {
 		}
 		return bandeiras;
 	}
+	public Integer filtrarQuantidadeVenda(ArrayList<Detalhe> listaVendas) {
+		return listaVendas.size();
+	}
 
 }
