@@ -11,3 +11,4 @@ Projeto realizado no processo de seleção da empresa Equals.
 | :hammer: | `:hammer:` | Bug corrigido | 
 | :pencil2: | `:pencil2:` | Impressão de valores corrigida | 
 | :fire: | `:fire:` | Remoção de arquivos | 
+| :recycle: | `:recycle:` | Refatoração de código
