@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Layout.Detalhe;
+import Layout.Trailler;
 
 public class DetalheUtil {
 	
-	public DetalheUtil(ArrayList<Detalhe> listaVendas) {
+	public DetalheUtil(ArrayList<Detalhe> listaVendas, Trailler traillerArquivo) {
 		Scanner leitura = new Scanner(System.in);
 		String bandeira = leitura.nextLine();
 		ArrayList<Detalhe> listaBandeiras = filtrarBandeira(listaVendas, bandeira);
@@ -58,5 +59,17 @@ public class DetalheUtil {
 		}
 		return contVendasParceladas;
 	}
+	
+	public Integer verificarQtdEsperadaRegistro(Trailler traillerArquivo){
+		return traillerArquivo.getTotalRegistro();
+	}
 
+	 public Boolean verificarQtdLidaEsperadaRegistro(Trailler traillerArquivo, ArrayList<Detalhe> listaVendas){	
+		 if (traillerArquivo.getTotalRegistro() == filtrarQuantidadeVenda(listaVendas)){
+			 return true;
+		 }else{
+			 return false;
+		 }
+
+	 }
 }
