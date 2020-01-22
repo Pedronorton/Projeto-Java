@@ -49,4 +49,14 @@ public class DetalheUtil {
 		return contVendasCredito;
 	}
 
+	public Integer filtrarVendasParceladas(ArrayList<Detalhe> listaVendas){
+		int contVendasParceladas = 0;
+		for (Detalhe d : listaVendas){
+			if(d.getQtdParcela() >=2 && d.getQtdParcela()<=18){
+				contVendasParceladas ++;
+			}
+		}
+		return contVendasParceladas;
+	}
+
 }
