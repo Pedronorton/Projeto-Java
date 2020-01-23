@@ -95,7 +95,7 @@ public class Processamento {
 		venda.setPlano(registro.substring(124,126));
 		venda.setParcela(registro.substring(126,128));
 		venda.setQtdParcela(Integer.parseInt(registro.substring(128,130)));
-		date = transformaStringHora(registro.substring(130,138));
+		date = transformarStringDate(registro.substring(130,138));
 		venda.setDataPrevistaPagamento(date);
 		venda.setTaxaParcelamentoComprador(Long.parseLong(registro.substring(138,151)));
 		venda.setTarifaBoleto(Long.parseLong(registro.substring(151,164)));
@@ -137,7 +137,6 @@ public class Processamento {
 			dataN = formato.parse(date);
 			return dataN;
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			System.out.println("Erro em converter a data");
 			return dataN;
 		}
