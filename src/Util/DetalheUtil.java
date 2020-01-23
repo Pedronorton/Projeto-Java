@@ -1,6 +1,9 @@
 package Util;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 import Layout.Detalhe;
@@ -70,6 +73,33 @@ public class DetalheUtil {
 		 }else{
 			 return false;
 		 }
-
 	 }
+
+	 public ArrayList<Detalhe> filtrarPorDataPrevistaPagamento(ArrayList<Detalhe> listaVendas){
+		ArrayList<Detalhe> listaOrdenada = listaVendas;
+		 
+		 Collections.sort (listaOrdenada, new Comparator() {
+			public int compare(Object o1, Object o2) {
+				Detalhe d1 = (Detalhe) o1;
+				Detalhe d2 = (Detalhe) o2;
+				if(d1.getDataPrevistaPagamento().getYear() < d1.getDataPrevistaPagamento().getYear()){
+					return -1;
+				}else if(d1.getDataPrevistaPagamento().getYear() > d2.getDataPrevistaPagamento().getYear()){
+					return 1;
+				}else if (d1.getDataPrevistaPagamento().getMonth() < d2.getDataPrevistaPagamento().getMonth()){
+					return -1;
+				}else if(d1.getDataPrevistaPagamento().getMonth() > d2.getDataPrevistaPagamento().getMonth()){
+					return 1;
+				}else if(d1.getDataPrevistaPagamento().getDate() < d2.getDataPrevistaPagamento().getDate()){
+					return -1;
+				}else if(d1.getDataPrevistaPagamento().getDate() > d2.getDataPrevistaPagamento().getDate()){
+					return 1;
+				}else {
+					return 0;
+				}
+			}
+		});
+		return listaOrdenada;
+	 }
+
 }
