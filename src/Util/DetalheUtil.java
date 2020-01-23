@@ -12,14 +12,66 @@ import Layout.Trailler;
 public class DetalheUtil {
 	
 	public DetalheUtil(ArrayList<Detalhe> listaVendas, Trailler traillerArquivo) {
+		int opcao;
+		Scanner entrada = new Scanner(System.in);
 		Scanner leitura = new Scanner(System.in);
-		String bandeira = leitura.nextLine();
-		ArrayList<Detalhe> listaBandeiras = filtrarBandeira(listaVendas, bandeira);
-		for(Detalhe d : listaBandeiras) {
-			System.out.println(d);
-		}	
+		String dados;
+		do{
+            menu();
+            opcao = entrada.nextInt();
+            
+            switch(opcao){
+			case 1:
+				System.out.println("Digite a bandeira a ser procurada");
+				dados = leitura.nextLine();
+				for(Detalhe d : filtrarBandeira(listaVendas, dados)){
+					System.out.println(d);
+				}
+                break;
+                
+			 case 2:
+			 	System.out.println("A quantidade de vendas foi de: "+ filtrarQuantidadeVenda(listaVendas)+" vendas\n");
+            
+                 break;
+                
+			case 3:
+				System.out.println("A quantidade de vendas no débito a vista foi de: "+ filtrarVendasDebitoVista(listaVendas)+" vendas\n");
+           
+                break;
+                
+			case 4:
+				System.out.println("A quantidade de vendas no crédito a vista foi de: "+ filtrarVendasCreditoVista(listaVendas)+" vendas\n");
+                
+                break;
+			
+			case 5:
+				System.out.println("A quantidade de vendas parceladas foi de: "+ filtrarVendasParceladas(listaVendas)+" vendas\n");
+				break;
+
+			case 6:
+				System.out.println("Lista de vendas prevista de pagamento ordenadas por data: \n");
+				for(Detalhe d : filtrarPorDataPrevistaPagamento(listaVendas)){
+					System.out.println(d);
+				}
+				break;
+            default:
+                System.out.println("Opção inválida.");
+            }
+        } while(opcao != 0);	
 	}
 	
+	public static void menu(){
+        System.out.println("\tFiltro Registro de Vendas");
+        System.out.println("0. Sair");
+        System.out.println("1. Filtrar por bandeira");
+        System.out.println("2. Número de vendas");
+        System.out.println("3. Número de vendas em Débito a vista");
+		System.out.println("4. Número de vendas em Crédito a vista");
+		System.out.println("5. Número de vendas parceladas");
+		System.out.println("6. Listar vendas por data prevista de pagamento");
+        System.out.println("Opcao:");
+    }
+
 	public ArrayList<Detalhe> filtrarBandeira(ArrayList<Detalhe> listaVendas, String bandeira) {
 		ArrayList<Detalhe> bandeiras = new ArrayList<Detalhe>();
 		for(Detalhe d : listaVendas) {
