@@ -128,6 +128,10 @@ public class Processamento {
 		return traillerArquivo;
 	}
 
+	public Header getHeader(){
+		return headerArquivo;
+	}
+
 	public Date transformarStringDate(String d){
 		String date = "";
 		date = date+d.charAt(0)+d.charAt(1)+d.charAt(2)+d.charAt(3)+"/"+d.charAt(4)+d.charAt(5)+"/"+d.charAt(6)+d.charAt(7);
@@ -151,7 +155,6 @@ public class Processamento {
 			dataN = formato.parse(date);
 			return dataN;
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			System.out.println("Erro em converter a data");
 			return dataN;
 		}
