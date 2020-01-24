@@ -1,13 +1,13 @@
-package Util;
+package util;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
-import Layout.Detalhe;
-import Layout.Header;
-import Layout.Trailler;
+import layout.Detalhe;
+import layout.Header;
+import layout.Trailler;
 
 public class DetalheUtil {
 	

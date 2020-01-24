@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
-import Layout.Detalhe;
-import Layout.Header;
-import Layout.Trailler;
-import Util.DetalheUtil;
+import layout.Detalhe;
+import layout.Header;
+import layout.Trailler;
+import util.DetalheUtil;
 
 public class Main {
 

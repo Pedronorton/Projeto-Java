@@ -7,9 +7,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import Layout.Detalhe;
-import Layout.Header;
-import Layout.Trailler;
+import layout.Detalhe;
+import layout.Header;
+import layout.Trailler;
 
 
 public class Processamento {
