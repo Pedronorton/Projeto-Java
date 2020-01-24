@@ -12,75 +12,83 @@ public class Header {
 	private Date periodoFinal;
 	private Integer sequencia;
 	private String empresaAdquirinte;
-	private String filler;
 	private Integer tipoExtrato;
+	private String filler;
 	private String versaoLayout;
 	private String versaoRelease;
 	private String usoFuturo;
 	
-	
-	public void setTipoRegistro(Integer v) {
-		tipoRegistro = v;
+	public Header(Integer tipoRegistro, Long estabelecimento, Date dataProcessamento, Date periodoInicial,Date  periodoFinal, Integer sequencia, String empresaAdquirinte, 
+	Integer tipoExtrato, String filler, String versaoLayout, String versaoRelease, String usoFuturo){
+
+		this.tipoRegistro = tipoRegistro;
+		this.estabelecimento = estabelecimento;
+		this.dataProcessamento = dataProcessamento;
+		this.periodoInicial = periodoInicial;
+		this.periodoFinal = periodoFinal;
+		this.sequencia = sequencia;
+		this.empresaAdquirinte = empresaAdquirinte;
+		this.tipoExtrato = tipoExtrato;
+		this.filler = filler;
+		this.versaoLayout = versaoLayout;
+		this.versaoRelease = versaoRelease;
+		this.usoFuturo = usoFuturo;
 	}
 	
-	public void setEstabelecimento(long v) {
-		estabelecimento = v;
+	public void setTipoRegistro(Integer tipoRegistro) {
+		this.tipoRegistro = tipoRegistro;
 	}
 	
-	public void setDataProcessamento(Date v) {
-		dataProcessamento = v;
+	public void setEstabelecimento(long estabelecimento) {
+		this.estabelecimento = estabelecimento;
 	}
 	
-	public void setPeriodoInicial(Date v) {
-		periodoInicial = v;
+	public void setDataProcessamento(Date dataProcessamento) {
+		this.dataProcessamento = dataProcessamento;
 	}
 	
-	public void setperiodoFinal(Date v) {
-		periodoFinal = v;
+	public void setPeriodoInicial(Date periodoInicial) {
+		this.periodoInicial = periodoInicial;
 	}
 	
-	public void setSequencia(Integer v) {
-		sequencia = v;
+	public void setperiodoFinal(Date periodoFinal) {
+		this.periodoFinal = periodoFinal;
 	}
 	
-	public void setFiller(String v) {
-		filler = v;
+	public void setSequencia(Integer sequencia) {
+		this.sequencia = sequencia;
 	}
 	
-	public void setEmpresaAdquirinte(String v) {
-		empresaAdquirinte = v;
+	public void setFiller(String filler) {
+		this.filler = filler;
 	}
 	
-	public void setTipoExtrato(Integer v) {
-		tipoExtrato = v;
+	public void setEmpresaAdquirinte(String empresaAdquirinte) {
+		this.empresaAdquirinte = empresaAdquirinte;
 	}
 	
-	public void setVersaoLayout(String v) {
-		versaoLayout = v;
+	public void setTipoExtrato(Integer tipoExtrato) {
+		this.tipoExtrato = tipoExtrato;
 	}
 	
-	public void setVersaoRelease(String v) {
-		versaoRelease = v;
+	public void setVersaoLayout(String versaoLayout) {
+		this.versaoLayout = versaoLayout;
 	}
 	
-	public void setUsoFuturo(String v) {
-		usoFuturo = v;
+	public void setVersaoRelease(String versaoRelease) {
+		this.versaoRelease = versaoRelease;
+	}
+	
+	public void setUsoFuturo(String usoFuturo) {
+		this.usoFuturo = usoFuturo;
 	}
 	
 	public Long getEstabelecimento() {
 		return estabelecimento;
 	}
 
-	public void setEstabelecimento(Long estabelecimento) {
-		this.estabelecimento = estabelecimento;
-	}
-
 	public Date getPeriodoFinal() {
 		return periodoFinal;
-	}
-
-	public void setPeriodoFinal(Date periodoFinal) {
-		this.periodoFinal = periodoFinal;
 	}
 
 	public Integer getTipoRegistro() {
