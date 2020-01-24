@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import layout.Detalhe;
 import layout.Header;
@@ -10,11 +11,87 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		int opcao;
+		Scanner entrada = new Scanner(System.in);
+		Scanner leitura = new Scanner(System.in);
+		String dados;
+		ArrayList<Detalhe> listaRetornada;
+
 		ArrayList<Detalhe> listaVendas = new ArrayList<Detalhe>();
 		AdquirenteService adquirenteService = new AdquirenteService("arquivos", listaVendas);
 		Trailler traillerArquivo = adquirenteService.getTrailler();
 		Header headerArquivo = adquirenteService.getHeader();
-		DetalheUtil detalheUtil = new DetalheUtil(listaVendas, traillerArquivo, headerArquivo);
+		DetalheUtil detalheUtil = new DetalheUtil();
+
+		
+		if(detalheUtil.verificarQuantidadeLidaEsperadaRegistro(traillerArquivo, listaVendas)){
+			System.out.println("A quantidade de dados lida foi igual a quantidade de dados esperada");
+		}else{
+			System.out.println("A quantidade de dados lida foi diferente da quantidade de dados esperada"+" Quantidade de dados esperada: "+traillerArquivo.getTotalRegistro()+" Quantidade de dados lida: "+detalheUtil.filtraQuantidadeVenda(listaVendas));
+		}
+		detalheUtil.informacoesHeader(headerArquivo);
+		
+		do{
+            detalheUtil.menu();
+            opcao = entrada.nextInt();
+            
+            switch(opcao){
+			case 1:
+				System.out.println("Digite a bandeira a ser procurada");
+				dados = leitura.nextLine().toLowerCase();
+				listaRetornada = detalheUtil.filtraBandeira(listaVendas, dados);
+				if(listaRetornada.size() == 0){
+					System.out.println("Nenhum registro encontrado\n");
+				}else{
+					for(Detalhe venda : listaRetornada){
+						System.out.println(venda);
+					}
+				}
+				
+                break;
+                
+			 case 2:
+			 	System.out.println("A quantidade de vendas foi de: "+ detalheUtil.filtraQuantidadeVenda(listaVendas)+" vendas\n");
+            
+                 break;
+                
+			case 3:
+				System.out.println("A quantidade de vendas no débito a vista foi de: "+ detalheUtil.filtraVendasDebitoVista(listaVendas)+" vendas\n");
+           
+                break;
+                
+			case 4:
+				System.out.println("A quantidade de vendas no crédito a vista foi de: "+ detalheUtil.filtraVendasCreditoVista(listaVendas)+" vendas\n");
+                
+                break;
+			
+			case 5:
+				System.out.println("A quantidade de vendas parceladas foi de: "+ detalheUtil.filtraVendasParceladas(listaVendas)+" vendas\n");
+				break;
+
+			case 6:
+				listaRetornada = detalheUtil.filtraPorDataPrevistaPagamento(listaVendas);
+				if(listaRetornada.size() == 0){
+					System.out.println("Não há vendas cadastradas");
+				}else{
+					System.out.println("Lista de vendas prevista de pagamento ordenadas por data: \n");
+					for(Detalhe venda : detalheUtil.filtraPorDataPrevistaPagamento(listaVendas)){
+						System.out.println(venda);
+					}
+				}
+				
+				break;
+			case 7:
+				System.out.println("Porcentagem de vendas: "+detalheUtil.porcentagemCredito(listaVendas)+"% Vendas no crédito | "+detalheUtil.porcentagemDebito(listaVendas)+"% Vendas no débito | "+detalheUtil.porcentagemParcelado(listaVendas)+"% Vendas parceladas");
+				break;
+			case 8:
+				System.out.println("Valor total em transações: "+detalheUtil.getTotalTransacoes(listaVendas));
+				break;
+				
+            default:
+                System.out.println("Opção inválida.");
+            }
+        } while(opcao != 0);	
 	}
 
 }
