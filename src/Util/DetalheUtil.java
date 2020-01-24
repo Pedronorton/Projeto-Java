@@ -34,6 +34,7 @@ public class DetalheUtil {
 		System.out.println("9. Valor total líquido em transações");
 		System.out.println("10. Valor total em tarifa de boleto do vendedor");
 		System.out.println("11. Valor total em tarifa de boleto do comprador");
+		System.out.println("12. Valor total em taxa de intermediação");
 		
         System.out.println("Opcao:");
 	}
@@ -235,5 +236,12 @@ public class DetalheUtil {
 		 return valorTotalTarifaBoeltoComprador;
 	 }
 
+	 public Long getTotalTaxaIntermediacao(ArrayList<Detalhe> listaVendas){
+		long valorTotalTaxaIntermediacao = 0;
+		for(Detalhe venda : listaVendas){
+			valorTotalTaxaIntermediacao += venda.getTaxaIntermediacao();
+		 }
+		 return valorTotalTaxaIntermediacao;
+	 }
 
 }
