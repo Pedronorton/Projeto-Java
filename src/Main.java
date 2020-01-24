@@ -6,6 +6,14 @@ import layout.Header;
 import layout.Trailler;
 import util.DetalheUtil;
 import service.AdquirenteService;
+/**
+ * @author Pedro Cobianchi Borges Paiva
+ * @since 17/01/2020
+ */
+
+ /**
+  * Classe main, onde é instanciado os obejtos AdquirenteService, Trailler, Header e DetalheUtil, alem de conter o menu com as opções de filtro
+  */
 
 public class Main {
 
@@ -27,7 +35,7 @@ public class Main {
 		if(detalheUtil.verificarQuantidadeLidaEsperadaRegistro(traillerArquivo, listaVendas)){
 			System.out.println("A quantidade de dados lida foi igual a quantidade de dados esperada");
 		}else{
-			System.out.println("A quantidade de dados lida foi diferente da quantidade de dados esperada"+" Quantidade de dados esperada: "+traillerArquivo.getTotalRegistro()+" Quantidade de dados lida: "+detalheUtil.filtraQuantidadeVenda(listaVendas));
+			System.out.println("A quantidade de dados lida foi diferente da quantidade de dados esperada"+" Quantidade de dados esperada: "+traillerArquivo.getTotalRegistro()+" Quantidade de dados lida: "+detalheUtil.filtraQuantidadeRegistros(listaVendas));
 		}
 		detalheUtil.informacoesHeader(headerArquivo);
 		
@@ -43,6 +51,7 @@ public class Main {
 				if(listaRetornada.size() == 0){
 					System.out.println("Nenhum registro encontrado\n");
 				}else{
+					System.out.println("Informações gerais da venda");
 					for(Detalhe venda : listaRetornada){
 						System.out.println(venda);
 					}
@@ -51,7 +60,7 @@ public class Main {
                 break;
                 
 			 case 2:
-			 	System.out.println("A quantidade de vendas foi de: "+ detalheUtil.filtraQuantidadeVenda(listaVendas)+" vendas\n");
+			 	System.out.println("A quantidade de recebimentos foi de: "+ detalheUtil.filtraQuantidadeRegistros(listaVendas)+" recebimentos\n");
             
                  break;
                 
@@ -74,7 +83,7 @@ public class Main {
 				if(listaRetornada.size() == 0){
 					System.out.println("Não há vendas cadastradas");
 				}else{
-					System.out.println("Lista de vendas prevista de pagamento ordenadas por data: \n");
+					System.out.println("Lista de vendas prevista de pagamento ordenadas por data com informações gerais: \n");
 					for(Detalhe venda : detalheUtil.filtraPorDataPrevistaPagamento(listaVendas)){
 						System.out.println(venda);
 					}
@@ -93,5 +102,6 @@ public class Main {
             }
         } while(opcao != 0);	
 	}
+	
 
 }
