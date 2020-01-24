@@ -38,13 +38,58 @@ public class Detalhe {
 	private Integer meioCaptura;
 	private	String numeroLogico;
 	private String nsu;
-	//private String filler;
 	private String cartaoBin;
 	private String cartaoHolder;
 	private String codAutorizacao;
 	private String codCV;
 	private Long usoFuturo;
 	
+	public Detalhe(Integer tipoRegistro, Integer estabelecimento, Date dataInicialTransacao, Date dataEvento, Date horaEvento, Integer tipoEvento, Integer tipoTransacao, String numeroSerieLeitor, String codTransacao, 
+	String codPedido, Long valorTotalTransacao, Long valorParcela, String pagamento, String plano , String parcela , Integer qtdParcela, Date dataPrevistaPagamento, Long taxaParcelamentoComprador,Long tarifaBoleto, Long valorOriginalTransacao, 
+	Long taxaParcelamentoVendedor, Long taxaIntermediacao, Long tarifaIntermediacao, Long tarifaBoletoVendedor, Long repasseAplicacao,Long valorLiquidoTransacao, Integer  statusPagamento,String filler1,
+	Integer meioPagamento, String instituicaoFinanceira, String canalEntrada, Integer leitor,Integer  meioCaptura, String numeroLogico, String nsu, String filler2, String cartaoBin, String cartaoHolder, String codAutorizacao,String codCV){
+		
+		this.tipoRegistro = tipoRegistro;
+		this.estabelecimento = estabelecimento;
+		this.dataInicialTransacao = dataInicialTransacao;
+		this.dataEvento = dataEvento;
+		this.horaEvento = horaEvento;
+		this.tipoEvento = tipoEvento;
+		this.tipoTransacao = tipoTransacao;
+		this.numeroSerieLeitor = numeroSerieLeitor;
+		this.codTransacao = codTransacao;
+		this.codPedido = codPedido;
+		this.valorTotalTransacao = valorTotalTransacao;
+		this.valorParcela = valorParcela;
+		this.pagamento = pagamento;
+		this.plano = plano;
+		this.parcela = parcela;
+		this.qtdParcela = qtdParcela;
+		this.dataPrevistaPagamento = dataPrevistaPagamento;
+		this.taxaParcelamentoComprador = taxaParcelamentoComprador;
+		this.tarifaBoleto = tarifaBoleto;
+		this.valorOriginalTransacao = valorOriginalTransacao;
+		this.taxaParcelamentoVendedor = taxaParcelamentoVendedor;
+		this.taxaIntermediacao = taxaIntermediacao;
+		this.tarifaIntermediacao = tarifaIntermediacao;
+		this.tarifaBoletoVendedor = tarifaBoletoVendedor;
+		this.repasseAplicacao = repasseAplicacao;
+		this.valorLiquidoTransacao = valorLiquidoTransacao;
+		this.statusPagamento = statusPagamento;
+		this.filler = filler1;
+		this.meioPagamento = meioPagamento;
+		this.instituicaoFinanceira = instituicaoFinanceira;
+		this.canalEntrada = canalEntrada;
+		this.leitor = leitor;
+		this.meioCaptura = meioCaptura;
+		this.numeroLogico = numeroLogico;
+		this.nsu = nsu;
+		this.filler = filler2;
+		this.cartaoBin = cartaoBin; 
+		this.cartaoHolder = cartaoHolder;
+		this.codCV = codCV;
+
+	}
 	public Integer getTipoRegistro() {
 		return tipoRegistro;
 	}
