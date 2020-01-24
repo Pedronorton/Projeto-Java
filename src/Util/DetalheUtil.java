@@ -24,13 +24,17 @@ public class DetalheUtil {
         System.out.println("\tFiltro Registro de Vendas");
         System.out.println("0. Sair");
         System.out.println("1. Filtrar por bandeira");
-        System.out.println("2. Número de vendas");
+        System.out.println("2. Número de recebimentos");
         System.out.println("3. Número de vendas em Débito a vista");
 		System.out.println("4. Número de vendas em Crédito a vista");
 		System.out.println("5. Número de vendas parceladas");
 		System.out.println("6. Listar vendas por data prevista de pagamento");
-		System.out.println("7. Prcentagem de vendas (Crédito a vista, Débito a vista, Parcelado)");
-		System.out.println("8. Valor total em transação");
+		System.out.println("7. Porcentagem de vendas (Crédito a vista, Débito a vista, Parcelado)");
+		System.out.println("8. Valor total original de transações");
+		System.out.println("9. Valor total líquido em transações");
+		System.out.println("10. Valor total em tarifa de boleto do vendedor");
+		System.out.println("11. Valor total em tarifa de boleto do comprador");
+		
         System.out.println("Opcao:");
 	}
 	/**
@@ -179,7 +183,7 @@ public class DetalheUtil {
 					return -1;
 				}else if(anoData1 > anoData2){
 					return 1;
-				}else if (mesData1 < mesData1){
+				}else if (mesData1 < mesData2){
 					return -1;
 				}else if(mesData1 > mesData2){
 					return 1;
@@ -199,13 +203,37 @@ public class DetalheUtil {
 	  * @param listaVendas 
 	  * @return valorTotalTransacoes
 	  */
-	 public Long getTotalTransacoes(ArrayList<Detalhe> listaVendas){
+	 public Long getTotalValorOriginalTransacoes(ArrayList<Detalhe> listaVendas){
 		long valorTotalTransacoes = 0; 
 		for(Detalhe venda : listaVendas){
 			valorTotalTransacoes += venda.getValorTotalTransacao();
 		 }
 		 return valorTotalTransacoes;
 	 }
+
+	 public Long getTotalValorLiquidoTransacoes(ArrayList<Detalhe> listaVendas){
+		long valorTotalLiquidoTransacao = 0;
+		for(Detalhe venda : listaVendas){
+			valorTotalLiquidoTransacao += venda.getValorLiquidoTransacao();
+		 }
+		 return valorTotalLiquidoTransacao;
+	 }
 	 
+	 public Long getTotalTarifaBoletoVendedor(ArrayList<Detalhe> listaVendas){
+		long valorTotalTarifaBoeltoVendedor = 0;
+		for(Detalhe venda : listaVendas){
+			valorTotalTarifaBoeltoVendedor += venda.getTarifaBoletoVendedor();
+		 }
+		 return valorTotalTarifaBoeltoVendedor;
+	 }
+
+	 public Long getTotalTarifaBoletoComprador(ArrayList<Detalhe> listaVendas){
+		long valorTotalTarifaBoeltoComprador = 0;
+		for(Detalhe venda : listaVendas){
+			valorTotalTarifaBoeltoComprador += venda.getTarifaBoleto();
+		 }
+		 return valorTotalTarifaBoeltoComprador;
+	 }
+
 
 }
