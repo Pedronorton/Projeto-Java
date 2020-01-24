@@ -85,18 +85,35 @@ public class Main {
 				}else{
 					System.out.println("Lista de vendas prevista de pagamento ordenadas por data com informações gerais: \n");
 					for(Detalhe venda : detalheUtil.filtraPorDataPrevistaPagamento(listaVendas)){
-						System.out.println(venda);
+						System.out.println("Data Prevista para pagamento: "+venda.getDataPrevistaPagamento());
+						System.out.println(venda+"\n");
 					}
 				}
 				
 				break;
 			case 7:
-				System.out.println("Porcentagem de vendas: "+detalheUtil.porcentagemCredito(listaVendas)+"% Vendas no crédito | "+detalheUtil.porcentagemDebito(listaVendas)+"% Vendas no débito | "+detalheUtil.porcentagemParcelado(listaVendas)+"% Vendas parceladas");
+				System.out.println("Porcentagem de vendas: "+detalheUtil.porcentagemCredito(listaVendas)+"% Vendas no crédito | "+detalheUtil.porcentagemDebito(listaVendas)+"% Vendas no débito | "+detalheUtil.porcentagemParcelado(listaVendas)+"% Vendas parceladas\n");
 				break;
+
 			case 8:
-				System.out.println("Valor total em transações: "+detalheUtil.getTotalTransacoes(listaVendas));
+				System.out.println("Total valor original em transações: "+detalheUtil.getTotalValorOriginalTransacoes(listaVendas));
 				break;
-				
+
+			case 9:
+				System.out.println("Total valor líquido em transações: "+detalheUtil.getTotalValorLiquidoTransacoes(listaVendas)+"\n");
+				break;
+
+			case 10:
+				System.out.println("Valor total em tarifa de boleto do vendedor: "+detalheUtil.getTotalTarifaBoletoVendedor(listaVendas)+"\n");
+				break;
+
+			case 11:
+				System.out.println("Valor total em tarifa de boleto do comprador: "+detalheUtil.getTotalTarifaBoletoComprador(listaVendas)+"\n");
+				break;
+			
+			case 0:
+			System.out.println("Saindo do Menu Filtro de Vendas...");
+				break;
             default:
                 System.out.println("Opção inválida.");
             }
