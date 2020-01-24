@@ -10,10 +10,10 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<Detalhe> listaVendas = new ArrayList<Detalhe>();
-		Processamento p = new Processamento("arquivos", listaVendas);
-		Trailler traillerArquivo = p.getTrailler();
-		Header headerArquivo = p.getHeader();
-		DetalheUtil d = new DetalheUtil(listaVendas, traillerArquivo, headerArquivo);
+		Processamento processamento = new Processamento("arquivos", listaVendas);
+		Trailler traillerArquivo = processamento.getTrailler();
+		Header headerArquivo = processamento.getHeader();
+		DetalheUtil detalheUtil = new DetalheUtil(listaVendas, traillerArquivo, headerArquivo);
 	}
 
 }
