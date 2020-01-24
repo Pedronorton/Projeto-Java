@@ -4,6 +4,12 @@ public class Trailler {
 	private Integer tipoRegistro;
 	private Integer totalRegistro;
 	private String usoFuturo;
+
+	public Trailler(Integer tipoRegistro,Integer totalRegistro,String usoFuturo){
+		this.tipoRegistro = tipoRegistro;
+		this.totalRegistro = totalRegistro;
+		this.usoFuturo = usoFuturo;
+	}
 	
 	public Integer getTipoRegistro() {
 		return tipoRegistro;
