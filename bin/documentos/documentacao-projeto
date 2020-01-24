@@ -1,0 +1,12 @@
+DOCUMENTAÇÃO PARA A ECEVUÇÃO DO PROJETO
+
+1 - O projeto em si está pronto para a execução.
+2 - O arquivo texto passado para ser processado está com o nome de "arquivos" e está localizado na pasta juntamente com o gitigore, README, LICENSE, fora da pasta src
+3 - Caso queria inserir um arquivo de texto novo é necessário que ele tenha esse mesmo nome, esteja nesssa rota, se for um arquivo do tipo txt basta por "arquivos.txt" se 
+for arquivo do tipo Arquivo de modo geral basta só por "arquivos" como o nome da entrada.
+4 - Antes de aparecer o menu de navegação irá aparecer uma mensagem mostrando se a quantidade de registros lidos foi igual a quantidade de registros esperados. Se for diferente 
+ira mostrar a quantidade esperada e a quantidade lida.
+5 - Ao processar o arquivo o irá aparecer um menu de navegação com uma série de filtros, basta escolher um e será impresso uma mensagem com a informação no terminal.
+6 - Essa informação é com respeito ao registro em si, e será impresso os valores que foram passados pelo Layout.
+7- OBS: Foi feito o processamento do arquivo passado, a parte web e banco de dados não foi feita.
+
