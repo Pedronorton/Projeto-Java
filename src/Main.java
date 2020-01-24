@@ -110,6 +110,10 @@ public class Main {
 			case 11:
 				System.out.println("Valor total em tarifa de boleto do comprador: "+detalheUtil.getTotalTarifaBoletoComprador(listaVendas)+"\n");
 				break;
+
+			case 12:
+				System.out.println("Valor total em taxa de intermediacao: "+detalheUtil.getTotalTaxaIntermediacao(listaVendas)+"\n");
+				break;
 			
 			case 0:
 			System.out.println("Saindo do Menu Filtro de Vendas...");
