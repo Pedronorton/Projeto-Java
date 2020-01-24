@@ -18,10 +18,10 @@ public class DetalheUtil {
 		Scanner leitura = new Scanner(System.in);
 		String dados;
 		ArrayList<Detalhe> listaRetornada;
-		if(verificarQtdLidaEsperadaRegistro(traillerArquivo, listaVendas)){
+		if(verificarQuantidadeLidaEsperadaRegistro(traillerArquivo, listaVendas)){
 			System.out.println("A quantidade de dados lida foi igual a quantidade de dados esperada");
 		}else{
-			System.out.println("A quantidade de dados lida foi diferente da quantidade de dados esperada"+" Quantidade de dados esperada: "+traillerArquivo.getTotalRegistro()+" Quantidade de dados lida: "+filtrarQuantidadeVenda(listaVendas));
+			System.out.println("A quantidade de dados lida foi diferente da quantidade de dados esperada"+" Quantidade de dados esperada: "+traillerArquivo.getTotalRegistro()+" Quantidade de dados lida: "+filtraQuantidadeVenda(listaVendas));
 		}
 		informacoesHeader(headerArquivo);
 		do{
@@ -32,44 +32,44 @@ public class DetalheUtil {
 			case 1:
 				System.out.println("Digite a bandeira a ser procurada");
 				dados = leitura.nextLine().toLowerCase();
-				listaRetornada = filtrarBandeira(listaVendas, dados);
+				listaRetornada = filtraBandeira(listaVendas, dados);
 				if(listaRetornada.size() == 0){
 					System.out.println("Nenhum registro encontrado\n");
 				}else{
-					for(Detalhe d : listaRetornada){
-						System.out.println(d);
+					for(Detalhe venda : listaRetornada){
+						System.out.println(venda);
 					}
 				}
 				
                 break;
                 
 			 case 2:
-			 	System.out.println("A quantidade de vendas foi de: "+ filtrarQuantidadeVenda(listaVendas)+" vendas\n");
+			 	System.out.println("A quantidade de vendas foi de: "+ filtraQuantidadeVenda(listaVendas)+" vendas\n");
             
                  break;
                 
 			case 3:
-				System.out.println("A quantidade de vendas no débito a vista foi de: "+ filtrarVendasDebitoVista(listaVendas)+" vendas\n");
+				System.out.println("A quantidade de vendas no débito a vista foi de: "+ filtraVendasDebitoVista(listaVendas)+" vendas\n");
            
                 break;
                 
 			case 4:
-				System.out.println("A quantidade de vendas no crédito a vista foi de: "+ filtrarVendasCreditoVista(listaVendas)+" vendas\n");
+				System.out.println("A quantidade de vendas no crédito a vista foi de: "+ filtraVendasCreditoVista(listaVendas)+" vendas\n");
                 
                 break;
 			
 			case 5:
-				System.out.println("A quantidade de vendas parceladas foi de: "+ filtrarVendasParceladas(listaVendas)+" vendas\n");
+				System.out.println("A quantidade de vendas parceladas foi de: "+ filtraVendasParceladas(listaVendas)+" vendas\n");
 				break;
 
 			case 6:
-				listaRetornada = filtrarPorDataPrevistaPagamento(listaVendas);
+				listaRetornada = filtraPorDataPrevistaPagamento(listaVendas);
 				if(listaRetornada.size() == 0){
 					System.out.println("Não há vendas cadastradas");
 				}else{
 					System.out.println("Lista de vendas prevista de pagamento ordenadas por data: \n");
-					for(Detalhe d : filtrarPorDataPrevistaPagamento(listaVendas)){
-						System.out.println(d);
+					for(Detalhe venda : filtraPorDataPrevistaPagamento(listaVendas)){
+						System.out.println(venda);
 					}
 				}
 				
@@ -101,43 +101,43 @@ public class DetalheUtil {
 		+"\nPeríodo inicial: "+headerArquivo.getPeriodoInicial()+"\nPeríodo final: "+ headerArquivo.getPeriodoFinal()+"\n");
 	}
 
-	public ArrayList<Detalhe> filtrarBandeira(ArrayList<Detalhe> listaVendas, String bandeira) {
+	public ArrayList<Detalhe> filtraBandeira(ArrayList<Detalhe> listaVendas, String bandeira) {
 		ArrayList<Detalhe> bandeiras = new ArrayList<Detalhe>();
-		for(Detalhe d : listaVendas) {
-			if(d.getInstituicaoFinanceira().toLowerCase().split(" ")[0].equals(bandeira)) {
-				bandeiras.add(d);
+		for(Detalhe venda : listaVendas) {
+			if(venda.getInstituicaoFinanceira().toLowerCase().split(" ")[0].equals(bandeira)) {
+				bandeiras.add(venda);
 			}
 		}
 		return bandeiras;
 	}
-	public Integer filtrarQuantidadeVenda(ArrayList<Detalhe> listaVendas) {
+	public Integer filtraQuantidadeVenda(ArrayList<Detalhe> listaVendas) {
 		return listaVendas.size();
 	}
 
-	public Integer filtrarVendasDebitoVista(ArrayList<Detalhe> listaVendas){
+	public Integer filtraVendasDebitoVista(ArrayList<Detalhe> listaVendas){
 		int contVendasDebito = 0;
-		for (Detalhe d : listaVendas){
-			if(d.getQtdParcela() == 0){
+		for (Detalhe venda : listaVendas){
+			if(venda.getQtdParcela() == 0){
 				contVendasDebito ++;
 			}
 		}
 		return contVendasDebito;
 	}
 
-	public Integer filtrarVendasCreditoVista(ArrayList<Detalhe> listaVendas){
+	public Integer filtraVendasCreditoVista(ArrayList<Detalhe> listaVendas){
 		int contVendasCredito = 0;
-		for (Detalhe d : listaVendas){
-			if(d.getQtdParcela() == 1){
+		for (Detalhe venda : listaVendas){
+			if(venda.getQtdParcela() == 1){
 				contVendasCredito ++;
 			}
 		}
 		return contVendasCredito;
 	}
 
-	public Integer filtrarVendasParceladas(ArrayList<Detalhe> listaVendas){
+	public Integer filtraVendasParceladas(ArrayList<Detalhe> listaVendas){
 		int contVendasParceladas = 0;
-		for (Detalhe d : listaVendas){
-			if(d.getQtdParcela() >=2 && d.getQtdParcela()<=18){
+		for (Detalhe venda : listaVendas){
+			if(venda.getQtdParcela() >=2 && venda.getQtdParcela()<=18){
 				contVendasParceladas ++;
 			}
 		}
@@ -145,52 +145,60 @@ public class DetalheUtil {
 	}
 
 	public Double porcentagemParcelado(ArrayList<Detalhe> listaVendas){
-		return (double) (((double)filtrarVendasParceladas(listaVendas) / (double)filtrarQuantidadeVenda(listaVendas)) * 100);
+		return (double) (((double)filtraVendasParceladas(listaVendas) / (double)filtraQuantidadeVenda(listaVendas)) * 100);
 	}
 	public Double porcentagemCredito(ArrayList<Detalhe> listaVendas){
-		return (double) (((double)filtrarVendasCreditoVista(listaVendas) / (double)filtrarQuantidadeVenda(listaVendas)) * 100);
+		return (double) (((double)filtraVendasCreditoVista(listaVendas) / (double)filtraQuantidadeVenda(listaVendas)) * 100);
 	}
 	public Double porcentagemDebito(ArrayList<Detalhe> listaVendas){
-		return (double) (((double)filtrarVendasDebitoVista(listaVendas) / (double)filtrarQuantidadeVenda(listaVendas)) * 100);
+		return (double) (((double)filtraVendasDebitoVista(listaVendas) / (double)filtraQuantidadeVenda(listaVendas)) * 100);
 	}
 	
-	public Integer verificarQtdEsperadaRegistro(Trailler traillerArquivo){
+	public Integer verificarQuantidadeEsperadaRegistro(Trailler traillerArquivo){
 		return traillerArquivo.getTotalRegistro();
 	}
 
-	 public Boolean verificarQtdLidaEsperadaRegistro(Trailler traillerArquivo, ArrayList<Detalhe> listaVendas){	
-		 if (traillerArquivo.getTotalRegistro() == filtrarQuantidadeVenda(listaVendas)){
+	 public Boolean verificarQuantidadeLidaEsperadaRegistro(Trailler traillerArquivo, ArrayList<Detalhe> listaVendas){	
+		 if (traillerArquivo.getTotalRegistro() == filtraQuantidadeVenda(listaVendas)){
 			 return true;
 		 }else{
 			 return false;
 		 }
 	 }
 
-	 public ArrayList<Detalhe> filtrarPorDataPrevistaPagamento(ArrayList<Detalhe> listaVendas){
-		ArrayList<Detalhe> listaOrdenada = listaVendas;
+	 public ArrayList<Detalhe> filtraPorDataPrevistaPagamento(ArrayList<Detalhe> listaVendas){
+		ArrayList<Detalhe> listaVendasOrdenada = listaVendas;
 		 
-		 Collections.sort (listaOrdenada, new Comparator() {
-			public int compare(Object o1, Object o2) {
-				Detalhe d1 = (Detalhe) o1;
-				Detalhe d2 = (Detalhe) o2;
-				if(d1.getDataPrevistaPagamento().getYear() < d1.getDataPrevistaPagamento().getYear()){
+		 Collections.sort (listaVendasOrdenada, new Comparator() {
+			public int compare(Object objeto1, Object objeto2) {
+				Detalhe data1 = (Detalhe) objeto1;
+				Detalhe data2 =  (Detalhe) objeto2;
+				Integer anoData1 = data1.getDataPrevistaPagamento().getYear();
+				Integer anoData2 = data2.getDataPrevistaPagamento().getYear();
+				Integer mesData1 = data1.getDataPrevistaPagamento().getMonth();
+				Integer mesData2 = data2.getDataPrevistaPagamento().getMonth();
+				Integer diaData1 = data1.getDataPrevistaPagamento().getDate();
+				Integer diaData2 = data2.getDataPrevistaPagamento().getDate();
+
+				if(anoData1 < anoData2){
 					return -1;
-				}else if(d1.getDataPrevistaPagamento().getYear() > d2.getDataPrevistaPagamento().getYear()){
+				}else if(anoData1 > anoData2){
 					return 1;
-				}else if (d1.getDataPrevistaPagamento().getMonth() < d2.getDataPrevistaPagamento().getMonth()){
+				}else if (mesData1 < mesData1){
 					return -1;
-				}else if(d1.getDataPrevistaPagamento().getMonth() > d2.getDataPrevistaPagamento().getMonth()){
+				}else if(mesData1 > mesData2){
 					return 1;
-				}else if(d1.getDataPrevistaPagamento().getDate() < d2.getDataPrevistaPagamento().getDate()){
+				}else if(diaData1 < diaData2){
 					return -1;
-				}else if(d1.getDataPrevistaPagamento().getDate() > d2.getDataPrevistaPagamento().getDate()){
+				}else if(diaData1 > diaData2){
 					return 1;
 				}else {
 					return 0;
 				}
 			}
 		});
-		return listaOrdenada;
+		return listaVendasOrdenada;
 	 }
+	 //IMPLEMENTAR VALOR RECEBIDO !!!!!!!!!!!!
 
 }
