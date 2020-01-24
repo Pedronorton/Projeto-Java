@@ -11,12 +11,26 @@ import java.util.Date;
 import layout.Detalhe;
 import layout.Header;
 import layout.Trailler;
+/**
+ * @author Pedro Cobianchi Borges Paiva
+ * @since 17/01/2020
+ */
 
 
+/**
+ * Classe AdquirenteService - Tem como objetivo criar o objeto AdquirenteService para que o arquivo passado possa ser processado;
+ * seja criado os objetos Header, Detalhe e Trailler; as vendas sejam adicionadas na lista de vendas; 
+ */
 public class AdquirenteService {
 	Trailler traillerArquivo;
 	Header headerArquivo;
 	Detalhe venda;
+	/**
+	 * Construtor da classe AdquirenteService que lê o arquivo e constrói os objetos 
+	 * assim que necessários
+	 * @param nomeArquivo
+	 * @param listaVendas
+	 */
 	public AdquirenteService(String nomeArquivo, ArrayList<Detalhe> listaVendas) {
 		try {
 			FileReader arquivo = new FileReader(nomeArquivo);
@@ -45,15 +59,24 @@ public class AdquirenteService {
 			
 			bufferedReaderArquivo.close();
 		}catch (IOException e) {
-			System.out.println(e);
+			throw new RuntimeException("Erro ao ler o arquivo");
 		}
 		
 	}
-	
+	/**
+	 * Método que tem como função analisar o primeiro dígito do registro 
+	 * para verificar se é do tipo Header (0), Detalhe (1) ou Trailler(9)
+	 * @param registro
+	 * @return
+	 */
 	public Integer verificaRegistro(String registro) {
 		return Integer.parseInt(registro.split("")[0]);
 	}
-	
+	/**
+	 * Método que tem como função instanciar o objeto Detalhe e retorna-lo
+	 * @param registro
+	 * @return
+	 */
 	public Detalhe montarVenda(String registro) {
 		
 		Integer tipoDado = Integer.parseInt(registro.substring(0,1));
@@ -104,7 +127,11 @@ public class AdquirenteService {
 		
 		return venda;
 	}
-
+	/**
+	 * Método que tem como função instanciar o objeto Header e retorna-lo
+	 * @param registro
+	 * @return
+	 */
 	public Header montaReader(String registro){
 		Integer tipoRegistro = Integer.parseInt(registro.substring(0,1));
 		Long estabelecimento = Long.parseLong(registro.substring(1,11));
@@ -124,7 +151,11 @@ public class AdquirenteService {
 
 		return headerArquivo;
 	}
-
+	/**
+	 * Método que tem como função instanciar o objeto Trailler e retorna-lo
+	 * @param registro
+	 * @return
+	 */
 	public Trailler montaTrailler(String registro){
 		Integer tipoRegistro = Integer.parseInt(registro.substring(0,1));
 		Integer totalRegistro = Integer.parseInt(registro.substring(1,12));
@@ -135,15 +166,25 @@ public class AdquirenteService {
 		return traillerArquivo;
 	}
 
-
+	/**
+	 * retorna o Trailler
+	 * @return traillerArquivo
+	 */
 	public Trailler getTrailler(){
 		return traillerArquivo;
 	}
-
+	/**
+	 * retorna o Header
+	 * @return headerArquivo
+	 */
 	public Header getHeader(){
 		return headerArquivo;
 	}
-
+	/**
+	 * Método que recebe a string de uma data no formato "20180125" e retorna (Date)25/01/2018. Converte uma objeto String em um objeto Date
+	 * @param stringData
+	 * @return
+	 */
 	public Date stringParaDate(String stringData){
 		String data = "";
 		data = data+stringData.charAt(0)+stringData.charAt(1)+stringData.charAt(2)+stringData.charAt(3)+"/"+stringData.charAt(4)+stringData.charAt(5)+"/"+stringData.charAt(6)+stringData.charAt(7);
@@ -157,7 +198,11 @@ public class AdquirenteService {
 			return dataNova;
 		}
 	}
-
+	/**
+	 * Método que recebe a string de uma hora no formato "131522" e retorna (Date)13:15:22. Converte uma objeto String em um objeto Date
+	 * @param stringHora
+	 * @return
+	 */
 	public Date stringParaHora(String stringHora){
 		String hora = "";
 		hora = hora+stringHora.charAt(0)+stringHora.charAt(1)+":"+stringHora.charAt(2)+stringHora.charAt(3)+":"+stringHora.charAt(4)+stringHora.charAt(5);

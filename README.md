@@ -12,3 +12,4 @@ Projeto realizado no processo de seleção da empresa Equals.
 | :pencil2: | `:pencil2:` | Impressão de valores corrigida | 
 | :fire: | `:fire:` | Remoção de arquivos | 
 | :recycle: | `:recycle:` | Refatoração de código
+| :book: | `:book:` | Documentação
