@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import layout.Detalhe;
-import layout.Header;
-import layout.Trailler;
-import util.DetalheUtil;
+import Layout.Detalhe;
+import Layout.Header;
+import Layout.Trailler;
+import Util.DetalheUtil;
 import service.AdquirenteService;
 /**
  * @author Pedro Cobianchi Borges Paiva
