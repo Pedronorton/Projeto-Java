@@ -1,4 +1,4 @@
-package layout;
+package Layout;
 
 /**
  * @author Pedro Cobianchi Borges Paiva
