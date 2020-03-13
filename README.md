@@ -1,5 +1,5 @@
-# Projeto-Equals
-Projeto realizado no processo de seleção da empresa Equals.
+# Projeto
+Projeto que recebe um arquivo texto que é processado e é fornecido vários filtros
 
 ## Descrição dos commits
 
